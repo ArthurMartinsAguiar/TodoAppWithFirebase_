@@ -61,7 +61,7 @@ Uso do **Navigation Compose** para gerenciar o fluxo entre telas (Login -> Home)
 
 1.  Clone este repositório:
     ```bash
-    git clone https://github.com/VictorM0nteiro/Todo_APP_with_Firebase_auth.git
+    git clone https://github.com/ArthurMartinsAguiar/TodoAppWithFirebase_.git
     ```
 2.  Abra o projeto no **Android Studio**.
 3.  **Configuração do Firebase:**
@@ -71,6 +71,6 @@ Uso do **Navigation Compose** para gerenciar o fluxo entre telas (Login -> Home)
 4.  Compile e execute em um emulador ou dispositivo físico.
 
 ---
-**Desenvolvido por Victor Hugo Monteiro e Murilo Melo**
+**Desenvolvido por Arthur Martins Aguiar e Eduardo Lordão Oliveira**
 
 **ReadMe desenvolvido utilizando GEMINI**
