@@ -9,14 +9,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.todoappfirebase.ui.components.CustomTextField
 
-/**
- * AddTaskDialog melhorado com UI mais moderna
- *
- * Melhorias:
- * 1. Design mais limpo e espaçado
- * 2. Botões com cores mais definidas
- * 3. Validação visual melhorada
- */
 @Composable
 fun AddTaskDialog(
     onDismiss: () -> Unit,

@@ -44,7 +44,7 @@ fun ListScreen(
             TopAppBar(
                 title = {
                     Text(
-                        text = "Minhas Tarefas",
+                        text = "Tarefas",
                         fontWeight = FontWeight.SemiBold
                     )
                 },
@@ -55,9 +55,9 @@ fun ListScreen(
                 actions = {
                     IconButton(onClick = {
                         authViewModel.signOut()
-                        navController.navigate(Routes.Login.route) /*{
+                        navController.navigate(Routes.Login.route) {
                             popUpTo(Routes.Home.route) { inclusive = true }
-                        }*/
+                        }
                     }) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Filled.ExitToApp,
@@ -111,12 +111,7 @@ fun ListScreen(
                             verticalArrangement = Arrangement.Center
                         ) {
                             Text(
-                                text = "📝",
-                                style = MaterialTheme.typography.displayLarge
-                            )
-                            Spacer(modifier = Modifier.height(16.dp))
-                            Text(
-                                text = "Nenhuma tarefa ainda",
+                                text = "Nenhuma tarefa adicionada",
                                 style = MaterialTheme.typography.titleLarge,
                                 color = MaterialTheme.colorScheme.onSurface,
                                 fontWeight = FontWeight.Medium

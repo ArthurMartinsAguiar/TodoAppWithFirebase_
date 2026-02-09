@@ -19,14 +19,6 @@ import com.example.todoappfirebase.ui.components.CustomButton
 import com.example.todoappfirebase.ui.components.CustomTextField
 import com.example.todoappfirebase.ui.navigation.Routes
 
-/**
- * LoginScreen melhorada com UI mais moderna e limpa
- *
- * Melhorias:
- * 1. Design mais espaçado e clean
- * 2. Melhor tipografia e hierarquia visual
- * 3. Feedback visual aprimorado
- */
 @Composable
 fun LoginScreen(
     navController: NavController,
@@ -63,33 +55,15 @@ fun LoginScreen(
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            // Cabeçalho
             Text(
-                text = "📝",
-                style = MaterialTheme.typography.displayLarge
+                text = "Entre em sua conta",
+                style = MaterialTheme.typography.headlineMedium,
+                fontWeight = FontWeight.SemiBold,
+                color = MaterialTheme.colorScheme.onBackground
             )
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            Text(
-                text = "Bem-vindo de volta!",
-                style = MaterialTheme.typography.headlineMedium,
-                fontWeight = FontWeight.Bold,
-                color = MaterialTheme.colorScheme.onBackground
-            )
-
-            Spacer(modifier = Modifier.height(8.dp))
-
-            Text(
-                text = "Entre para gerenciar suas tarefas",
-                style = MaterialTheme.typography.bodyLarge,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                textAlign = TextAlign.Center
-            )
-
-            Spacer(modifier = Modifier.height(48.dp))
-
-            // Campos de entrada
             CustomTextField(
                 value = email,
                 onValueChange = { email = it },
@@ -106,9 +80,8 @@ fun LoginScreen(
                 isPassword = true
             )
 
-            Spacer(modifier = Modifier.height(32.dp))
+            Spacer(modifier = Modifier.height(24.dp))
 
-            // Botão de login
             CustomButton(
                 text = "Entrar",
                 onClick = { viewModel.login(email, password) },
@@ -116,9 +89,8 @@ fun LoginScreen(
                 enabled = email.isNotEmpty() && password.isNotEmpty()
             )
 
-            Spacer(modifier = Modifier.height(24.dp))
+            Spacer(modifier = Modifier.height(16.dp))
 
-            // Link para cadastro
             Row(
                 verticalAlignment = Alignment.CenterVertically
             ) {

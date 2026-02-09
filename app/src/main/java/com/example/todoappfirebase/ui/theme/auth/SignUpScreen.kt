@@ -19,14 +19,6 @@ import com.example.todoappfirebase.ui.components.CustomButton
 import com.example.todoappfirebase.ui.components.CustomTextField
 import com.example.todoappfirebase.ui.navigation.Routes
 
-/**
- * SignUpScreen melhorada com UI mais moderna
- *
- * Melhorias:
- * 1. Design consistente com LoginScreen
- * 2. Validação visual de senhas
- * 3. Melhor feedback ao usuário
- */
 @Composable
 fun SignUpScreen(
     navController: NavController,
@@ -70,33 +62,15 @@ fun SignUpScreen(
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            // Cabeçalho
             Text(
-                text = "✨",
-                style = MaterialTheme.typography.displayLarge
+                text = "Crie sua conta",
+                style = MaterialTheme.typography.headlineMedium,
+                fontWeight = FontWeight.SemiBold,
+                color = MaterialTheme.colorScheme.onBackground
             )
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            Text(
-                text = "Crie sua conta",
-                style = MaterialTheme.typography.headlineMedium,
-                fontWeight = FontWeight.Bold,
-                color = MaterialTheme.colorScheme.onBackground
-            )
-
-            Spacer(modifier = Modifier.height(8.dp))
-
-            Text(
-                text = "Comece a organizar suas tarefas hoje",
-                style = MaterialTheme.typography.bodyLarge,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                textAlign = TextAlign.Center
-            )
-
-            Spacer(modifier = Modifier.height(48.dp))
-
-            // Campos de entrada
             CustomTextField(
                 value = email,
                 onValueChange = { email = it },
@@ -122,7 +96,6 @@ fun SignUpScreen(
                 isPassword = true
             )
 
-            // Mensagem de erro de senha
             if (showPasswordError) {
                 Spacer(modifier = Modifier.height(8.dp))
                 Text(
@@ -133,9 +106,8 @@ fun SignUpScreen(
                 )
             }
 
-            Spacer(modifier = Modifier.height(32.dp))
+            Spacer(modifier = Modifier.height(24.dp))
 
-            // Botão de cadastro
             CustomButton(
                 text = "Cadastrar",
                 onClick = {
@@ -154,7 +126,6 @@ fun SignUpScreen(
 
             Spacer(modifier = Modifier.height(24.dp))
 
-            // Link para login
             Row(
                 verticalAlignment = Alignment.CenterVertically
             ) {
