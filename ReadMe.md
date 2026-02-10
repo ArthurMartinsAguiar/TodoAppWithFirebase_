@@ -1,76 +1,53 @@
-# 📝 ToDo App - Firebase & Jetpack Compose
+# 📝 Gerenciador de Tarefas - Firebase + Jetpack Compose
 
-Um aplicativo de gerenciamento de tarefas moderno, construído nativamente para Android utilizando **Kotlin**, **Jetpack Compose** e **Firebase** como backend. O projeto foca em arquitetura limpa, injeção de dependência e gerenciamento de estado reativo.
+Este é um aplicativo nativo para Android focado em produtividade, desenvolvido com **Kotlin**. A aplicação utiliza o **Jetpack Compose** para uma interface moderna e o **Firebase** como infraestrutura de backend, priorizando práticas recomendadas como injeção de dependência e arquitetura escalável.
 
-## 🚀 Funcionalidades
+## 🚀 Recursos Principais
 
-* **Autenticação de Usuário:**
-    * Login e Cadastro via E-mail e Senha (Firebase Authentication).
-    * Tratamento de erros de segurança e validação de input.
-* **Gerenciamento de Tarefas:**
-    * Criação de novas tarefas.
-    * Listagem de tarefas em tempo real.
-    * Marcação de tarefas como concluídas (Checkbox).
-    * Exclusão de tarefas.
-* **Interface Reativa:** UI construída 100% em Kotlin com Jetpack Compose, reagindo a mudanças de estado instantaneamente.
+* **Sistema de Autenticação:**
+    * Fluxo de Login e Registro via e-mail/senha utilizando Firebase Authentication.
+    * Validação de campos e tratamento de erros nativo.
+* **Controle de Tarefas (CRUD):**
+    * Adição rápida de novas pendências.
+    * Listagem dinâmica com sincronização em tempo real.
+    * Alternância de status (concluído/pendente) via Checkbox.
+    * Remoção simplificada de registros.
+* **UI Declarativa:** Interface 100% responsiva e reativa, aproveitando o poder do Compose para refletir mudanças de estado instantaneamente.
 
-## 🏗️ Decisões de Arquitetura
+## 🏗️ Estrutura e Arquitetura
 
-O projeto segue a arquitetura **MVVM (Model-View-ViewModel)** combinada com o padrão de **Clean Architecture** simplificado para manter o código testável e organizado.
+O software foi construído seguindo os princípios de **Clean Architecture** e o padrão **MVVM (Model-View-ViewModel)**, garantindo um código modular e fácil de testar.
 
-### 1. MVVM (Model-View-ViewModel)
-* **View (Compose):** Responsável apenas por desenhar a tela. Não contém lógica de negócios. Observa os dados expostos pela ViewModel.
-* **ViewModel:** Gerencia o estado da UI (`StateFlow` / `LiveData`) e comunica-se com a camada de dados (Repositórios). Sobrevive a mudanças de configuração (rotação de tela).
-* **Model:** Representa os dados (ex: Data Class `TodoTask`).
+### 1. Camadas do MVVM
+* **View:** Implementada com Compose, foca estritamente na renderização da interface e na observação dos estados fornecidos pela ViewModel.
+* **ViewModel:** Atua como ponte entre os dados e a UI. Utiliza `StateFlow` ou `LiveData` para gerenciar estados e lida com a lógica de apresentação, mantendo-se íntegra durante mudanças de configuração.
+* **Model:** Define as entidades de dados da aplicação, como a classe `TodoTask`.
 
-### 2. Injeção de Dependência (Hilt)
-Utilizamos **Hilt (Dagger)** para gerenciar a criação de objetos.
-* **Por que?** Evita acoplamento forte entre classes e facilita a manutenção. Por exemplo, a `MainActivity` não precisa saber como criar uma instância do `AuthRepository`; o Hilt injeta isso automaticamente com `@AndroidEntryPoint`.
+### 2. Injeção de Dependência com Hilt
+Para gerenciar o ciclo de vida dos componentes e reduzir o acoplamento, utilizamos o **Hilt (Dagger)**.
+* **Vantagem:** Facilita a escalabilidade. Com anotações como `@AndroidEntryPoint`, as dependências (como os repositórios) são fornecidas automaticamente, eliminando a necessidade de instanciar classes manualmente dentro das Activities ou ViewModels.
 
-### 3. Padrão de Repositório (Repository Pattern)
-Uma camada de abstração entre a ViewModel e o Firebase.
-* **Decisão:** Se no futuro decidirmos trocar o Firebase por um banco de dados local (Room) ou uma API REST, só precisamos alterar o Repositório, sem quebrar as telas do app.
+### 3. Repository Pattern
+Implementamos uma camada de abstração para o acesso a dados.
+* **Estratégia:** O repositório centraliza a comunicação com o Firebase. Isso permite que, caso o projeto precise migrar para uma API REST ou banco de dados local (Room) no futuro, a mudança seja feita em um único local sem afetar a lógica da interface.
 
-### 4. Navegação
-Uso do **Navigation Compose** para gerenciar o fluxo entre telas (Login -> Home), mantendo o conceito de "Single Activity Application".
+### 4. Navegação Moderna
+A transição entre telas (ex: autenticação para a Home) é gerida pelo **Navigation Compose**, seguindo a arquitetura de "Single Activity".
 
-## 🛠️ Tech Stack & Bibliotecas
+## 🛠️ Tecnologias Utilizadas
 
-* **Linguagem:** [Kotlin](https://kotlinlang.org/)
-* **UI Toolkit:** [Jetpack Compose](https://developer.android.com/jetpack/compose)
-    * Material Design 3
-* **Injeção de Dependência:** [Hilt](https://dagger.dev/hilt/)
-* **Backend as a Service:** [Firebase](https://firebase.google.com/)
-    * Authentication (Auth)
-    * Firestore / Realtime Database (DB)
-* **Assincronismo:** Coroutines & Flow
-
-## 📱 Telas do Aplicativo
-
-### 1. Tela de Login / Cadastro
-* Foco em UX simples.
-* Feedback visual de erros (ex: senha fraca, e-mail inválido).
-* Integração direta com Firebase Auth.
-
-### 2. Tela Principal (Home)
-* Exibição da lista de tarefas.
-* Input para adicionar novos itens rapidamente.
-* Interatividade imediata (check/uncheck) refletindo no banco de dados.
-
-## ⚙️ Como rodar o projeto
-
-1.  Clone este repositório:
-    ```bash
-    git clone https://github.com/ArthurMartinsAguiar/TodoAppWithFirebase_.git
-    ```
-2.  Abra o projeto no **Android Studio**.
-3.  **Configuração do Firebase:**
-    * Crie um projeto no console do Firebase.
-    * Baixe o arquivo `google-services.json`.
-    * Coloque o arquivo na pasta `app/` do projeto.
-4.  Compile e execute em um emulador ou dispositivo físico.
+* **Linguagem:** Kotlin
+* **Interface:** Jetpack Compose (Material Design 3)
+* **DI:** Hilt
+* **Backend:** Firebase (Auth & Firestore/Realtime Database)
+* **Concorrência:** Coroutines & Flow para operações assíncronas
 
 ---
-**Desenvolvido por Arthur Martins Aguiar e Eduardo Lordão Oliveira**
 
-**ReadMe desenvolvido utilizando GEMINI**
+## 📱 Visão Geral das Telas
+
+### Autenticação
+Interface intuitiva voltada para a experiência do usuário (UX), com feedbacks visuais claros para erros de digitação ou falhas de login.
+
+### Home (Painel de Tarefas)
+Central de controle onde o usuário visualiza sua
