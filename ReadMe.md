@@ -50,4 +50,24 @@ A transição entre telas (ex: autenticação para a Home) é gerida pelo **Navi
 Interface intuitiva voltada para a experiência do usuário (UX), com feedbacks visuais claros para erros de digitação ou falhas de login.
 
 ### Home (Painel de Tarefas)
-Central de controle onde o usuário visualiza sua
+Central de controle onde o usuário visualiza sua lista, adiciona itens e interage com as tarefas. A sincronização com o banco de dados ocorre de forma imediata após cada ação.
+
+---
+
+## ⚙️ Guia de Instalação
+
+1.  **Clone o projeto:**
+    ```bash
+    git clone [https://github.com/ArthurMartinsAguiar/TodoAppWithFirebase_.git](https://github.com/ArthurMartinsAguiar/TodoAppWithFirebase_.git)
+    ```
+2.  **Importação:** Abra a pasta no **Android Studio**.
+3.  **Configuração do Backend:**
+    * Crie um projeto no [Console do Firebase](https://console.firebase.google.com/).
+    * Adicione um app Android ao projeto e baixe o `google-services.json`.
+    * Mova o arquivo baixado para o diretório `app/` do seu projeto.
+4.  **Execução:** Sincronize o Gradle e rode o aplicativo em seu dispositivo ou emulador.
+
+---
+**Projeto desenvolvido por: Arthur Martins Aguiar e Eduardo Lordão Oliveira**
+
+*Documentação refinada com auxílio de IA (Gemini).*
